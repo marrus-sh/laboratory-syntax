@@ -1,0 +1,234 @@
+@import "syntax-variables";
+
+atom-text-editor {
+	Background-Color: @syntax-background-color;
+	Color: @syntax-text-color;
+
+	.wrap-guide { Background-Color: @syntax-wrap-guide-color }
+	.indent-guide { Color: @syntax-indent-guide-color }
+	.invisible-character { Color: @syntax-invisible-character-color }
+
+	.gutter {
+		Background-Color: @syntax-gutter-background-color;
+		Color: @syntax-gutter-text-color;
+
+		.line-number { Opacity: 1;
+
+			&.cursor-line {
+				Background:
+					@syntax-gutter-background-color-selected;
+				Color: @syntax-gutter-text-color-selected;
+				Font-Weight: Bold;
+
+				&.folded .icon-right { Color: Inherit }
+			}
+
+			&.cursor-line-no-selection {
+				Background: Linear-Gradient(To Right,
+					@syntax-gutter-background-color-selected,
+					Fade(
+					@syntax-gutter-background-color-selected,
+					80%) 50%,
+					Fade(
+					@syntax-gutter-background-color-selected,
+					40%));
+				Text-Decoration: Inherit;
+			}
+
+			&.folded { Font-Style: Italic;
+
+				.icon-right { Color: @pastel_pink }
+			}
+
+			.icon-right {
+				Color: @print_white;
+				Opacity: .85;
+			}
+		}
+	}
+
+	.fold-marker:after {
+		Display: Inline-Block;
+		Box-Sizing: Content-Box;
+		Margin: -2PX;
+		Border: 2PX CurrentColor Solid;
+		Padding: 0;
+		Width: 1.15EM;
+		Height: 1.15EM;
+		Border-Radius: .25EM;
+		Color: @pastel_pink;
+		Line-Height: 1.15;
+		Text-Align: Center;
+	}
+	.invisible { Color: @syntax-text-color }
+
+	.cursor {
+		Border: Thin @syntax-cursor-color Solid;
+		Background: Fade(@syntax-cursor-color, 15%);
+	}
+
+	.bracket-matcher .region {
+		Border: Thin @print_black Solid;
+		Background: @pastel_green;
+	}
+
+	.current-result .region {
+		Background: @syntax-result-marker-color-selected;
+		Border: Thin @print_black Solid;
+		Border-Radius: 0;
+	}
+
+	.find-result .region {
+		Background: @syntax-result-marker-color;
+		Border: None;
+		Border-Radius: 0;
+	}
+
+	.selection .region { Background-Color: @syntax-selection-color;
+
+		&:Last-Child { Border-Bottom: Thin @print_black Solid }
+	}
+}
+
+
+// Syntax styles
+
+.syntax--comment { Font-Weight: Bold }
+
+.syntax--keyword { Color: @pastel_blue;
+
+	&.syntax--control { Color: @pastel_red }
+	&.syntax--operator { Color: @print_black }
+	&.syntax--statement{ Font-Weight: Bold }
+}
+
+.syntax--storage { Color: @print_black;
+
+	&.syntax--modifier { Color: @pastel_cyan }
+	&.syntax--type { Font-Weight: Bold }
+}
+
+.syntax--constant { Color: @pastel_blue;
+
+	&.syntax--character.syntax--escape { Color: @pastel_red }
+	&.syntax--numeric { Color: @pastel_gold }
+	&.syntax--language { Font-Weight: Bold }
+	&.syntax--symbol {
+		Color: @print_dim;
+		Background: @print_bright;
+	}
+}
+
+.syntax--variable { Color: @pastel_pink;
+
+	&.syntax--constant {
+		Color: @pastel_blue;
+		Font-Weight: Bold;
+	}
+	&.syntax--parameter {
+		Color: Inherit;
+		Text-Decoration: Underline;
+	}
+}
+
+.syntax--invalid.syntax--illegal {
+	Color: @syntax-background-color;
+	Background-Color: @pastel_red;
+	Font-Weight: Bold;
+}
+
+.syntax--string { Color: @pastel_cyan;
+
+	&.syntax--regexp { Color: @pastel_red }
+}
+
+.syntax--punctuation {
+	&.syntax--definition {
+		&.syntax--comment { Color: @print }
+		&.syntax--constant { Color: Inherit }
+		&.syntax--entity { Color: @print_black }
+		&.syntax--heading { Color: @pastel_red }
+		&.syntax--tag { Color: @pastel_red }
+		&.syntax--variable { Color: @pastel_red }
+	}
+
+	&.syntax--section.syntax--embedded { Color: @print_black }
+	&.syntax--separator { Color: @print_black }
+}
+
+.syntax--support {
+	&.syntax--class { Color: @pastel_cyan }
+	&.syntax--function  { Color: @pastel_orange }
+	&.syntax--property-name { Font-Weight: Bold }
+}
+
+.syntax--entity {
+	&.syntax--name.syntax--function { Color: @pastel_orange }
+	&.syntax--name.syntax--type {
+		Color: @print_dim;
+		Text-Decoration: Underline;
+	}
+	&.syntax--other.syntax--inherited-class { Color: @pastel_pink }
+
+	&.syntax--name.syntax--section {
+		Color: @pastel_red;
+		Font-Weight: Bold;
+		Text-Decoration: Underline;
+	}
+
+	&.syntax--name.syntax--tag {
+		Color: @pastel_red;
+		Font-Style: Italic;
+	}
+
+	&.syntax--other.syntax--attribute-name {
+		Color: @print_dim;
+		Font-Weight: Bold;
+		Text-Decoration: Underline;
+
+		&.syntax--id { Color: @pastel_cyan }
+	}
+}
+
+.syntax--meta {
+	&.syntax--separator {
+		Color: @print_medium;
+		Font-Style: Italic;
+		Font-Weight: Bold;
+	}
+}
+
+.syntax--none { Color: @syntax-text-color }
+
+.syntax--markup {
+	&.syntax--bold {
+		Color: @pastel_red;
+		Font-Weight: Bold;
+	}
+
+	&.syntax--changed { Color: @syntax-color-modified }
+	&.syntax--deleted { Color: @syntax-color-removed }
+
+	&.syntax--italic {
+		Color: @pastel_gold;
+		Font-Style: Italic;
+	}
+
+	&.syntax--heading { Color: @pastel_red }
+	&.syntax--inserted { Color: @syntax-color-added }
+	&.syntax--link { Color: @pastel_cyan }
+	&.syntax--list { Color: @pastel_gold }
+	&.syntax--quote { Color: @pastel_blue }
+	&.syntax--underline { Text-Decoration: Underline }
+
+	&.syntax--raw.syntax--inline {
+		Color: @print_black;
+		Text-Decoration: Underline;
+	}
+}
+
+// Mini editor
+
+atom-text-editor[mini] .scroll-view {
+     padding-left: 1px;
+}
