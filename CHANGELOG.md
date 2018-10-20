@@ -1,3 +1,9 @@
+## 0.3.0
+
++ Improved styling for Git diffs
++ Better gutter appearance
++ Units (eg, `PX`) now distinguished from other keywords
+
 ## 0.2.0
 
 Due to auth issues `apm` bumped the version string a bit much.

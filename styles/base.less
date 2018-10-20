@@ -2,17 +2,31 @@
 
 atom-text-editor {
 	Background-Color: @syntax-background-color;
-	Color: @syntax-text-color;
 
 	.wrap-guide { Background-Color: @syntax-wrap-guide-color }
 	.indent-guide { Color: @syntax-indent-guide-color }
 	.invisible-character { Color: @syntax-invisible-character-color }
 
 	.gutter {
+		Margin-Right: 1CH;
 		Background-Color: @syntax-gutter-background-color;
 		Color: @syntax-gutter-text-color;
+		Box-Shadow: 0.125EM 0 0.25EM @print;
 
 		.line-number { Opacity: 1;
+
+			&.git-line-added,
+			&.git-line-modified {
+				Border-Left-Width: 6PX;
+				Padding-Left: Calc(0.5EM - 6PX);
+			}
+
+			&.git-line-removed::BEFORE {
+				Top: 100%;
+				Bottom: Auto;
+				Margin-Top: -8PX;
+				Border-Width: 8PX;
+			}
 
 			&.cursor-line {
 				Background:
@@ -99,7 +113,8 @@ atom-text-editor {
 
 	&.syntax--control { Color: @pastel_red }
 	&.syntax--operator { Color: @print_black }
-	&.syntax--statement{ Font-Weight: Bold }
+	&.syntax--statement { Font-Weight: Bold }
+	&.syntax--unit { Color: @pastel_red }
 }
 
 .syntax--storage { Color: @print_black;
@@ -148,6 +163,7 @@ atom-text-editor {
 		&.syntax--constant { Color: Inherit }
 		&.syntax--entity { Color: @print_black }
 		&.syntax--heading { Color: @pastel_red }
+		&.syntax--keyword { Color: @print_black }
 		&.syntax--tag { Color: @pastel_red }
 		&.syntax--variable { Color: @pastel_red }
 	}
