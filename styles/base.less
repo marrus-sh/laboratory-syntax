@@ -180,10 +180,12 @@ atom-text-editor {
 
 .syntax--entity {
 	&.syntax--name.syntax--function { Color: @pastel_orange }
+
 	&.syntax--name.syntax--type {
 		Color: @print_dim;
 		Text-Decoration: Underline;
 	}
+
 	&.syntax--other.syntax--inherited-class { Color: @pastel_pink }
 
 	&.syntax--name.syntax--section {
@@ -202,7 +204,15 @@ atom-text-editor {
 		Font-Weight: Bold;
 		Text-Decoration: Underline;
 
-		&.syntax--id { Color: @pastel_cyan }
+		&.syntax--css {
+			&.syntax--class { Color: @pastel_red }
+			&.syntax--id { Color: @pastel_cyan }
+		}
+
+		&:Not(.syntax--css) {
+			&.syntax--class { Text-Decoration-Color: @pastel_red }
+			&.syntax--id { Text-Decoration-Color: @pastel_cyan }
+		}
 	}
 }
 
