@@ -1,3 +1,7 @@
+## 0.4.0
+
++ Better styling for classes and IDs in HTML and CSS
+
 ## 0.3.0
 
 + Improved styling for Git diffs
