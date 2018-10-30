@@ -102,6 +102,19 @@ atom-text-editor {
 
 		&:Last-Child { Border-Bottom: Thin @print_black Solid }
 	}
+
+	&[data-grammar~=text] .gutter {
+		Color: @print_bright;
+		Background-Color: @pastel_red;
+		Box-Shadow: 0.125EM 0 0.25EM @print_medium;
+	}
+
+	//  `atom-overtype-mode` support
+	&.overtype-cursor.editor .cursors .cursor {
+		Border-Style: None None Solid;
+		Border-Color: Transparent Transparent @syntax-cursor-color;
+		Border-Width: 0 0 Medium;
+	}
 }
 
 
@@ -222,6 +235,7 @@ atom-text-editor {
 		Font-Style: Italic;
 		Font-Weight: Bold;
 	}
+	&.syntax--arguments { Color: @syntax-text-color }
 }
 
 .syntax--none { Color: @syntax-text-color }
