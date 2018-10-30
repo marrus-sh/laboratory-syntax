@@ -124,8 +124,18 @@ atom-text-editor {
 
 .syntax--keyword { Color: @pastel_blue;
 
-	&.syntax--control { Color: @pastel_red }
-	&.syntax--operator { Color: @print_black }
+	&.syntax--control { Color: @pastel_red;
+
+		&.syntax--turtle {
+			Color: @print_black;
+			Font-Weight: Bold;
+		}
+	}
+	&.syntax--operator { Color: @print_black;
+
+		&.syntax--turtle,
+		&.syntax--ntriples { Color: @pastel_orange }
+	}
 	&.syntax--statement { Font-Weight: Bold }
 	&.syntax--unit { Color: @pastel_red }
 }
@@ -187,6 +197,7 @@ atom-text-editor {
 
 .syntax--support {
 	&.syntax--class { Color: @pastel_cyan }
+	&.syntax--type { Text-Decoration: Underline }
 	&.syntax--function  { Color: @pastel_orange }
 	&.syntax--property-name { Font-Weight: Bold }
 }

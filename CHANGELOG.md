@@ -1,3 +1,7 @@
+##  0.6.0
+
++ Improvements to support RDF syntaxes (N-Triples, Turtle)
+
 ##  0.5.0
 
 + Improves support for `atom-overtype-mode`
